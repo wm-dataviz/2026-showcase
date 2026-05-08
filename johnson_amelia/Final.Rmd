@@ -1,0 +1,564 @@
+---
+title: "Final"
+author: "Amelia Johnson"
+date: "2026-04-24"
+output: html_document
+---
+
+Memo Reflection:
+
+For my final project, I wanted to focus on the distribution of electoral reform policies in the US, and whether those policies coincide with registration, turnout, and partisan patterns among states. I examined three policies: universal vote by mail, same day registration, and automatic voter registration. I selected these policies because they are somewhat widespread across the US and are uniform in their specifics— as in, every state with universal vote by mail conducts it in a highly similar manner. This allows for easy comparison between states that is unaffected by policy differences. 
+
+Universal vote by mail allows all voters to mail in their ballot, rather than voting in-person. Some states restrict mail and absentee ballots to certain types of voters, like older voters or disabled voters. Same day registration is a process by which a voter can register to vote and immediately cast their ballot on Election Day. Some states allow this process during early voting as well, but I restricted my dataset to states which specifically provide for Election Day SDR. By contrast, other states have deadlines for voter registration, past which a voter cannot cast a ballot. Finally, automatic voter registration is a process by which states automatically register citizens to vote when they become eligible, often through the DMV. This process does not guarantee a 100% registration rate, because voters still have an opt-out option and can cancel their registration at any time. Overall, these three policies aim to improve voter registration (especially SDR and AVR) and turnout (especially VBM and SDR). 
+
+Political participation is a vital component of a well-functioning democracy. Unfortunately, turnout rates in the US lag behind that of many other well-developed nations. As a result, improving voter registration and turnout is an important issue for policymakers, who often consider whether increasing voter access to the polls can boost participation. The three policies I focus on are all efforts to address this issue, and so assessing their efficacy is important. Furthermore, because these policies are not implemented in every US state, an understanding of their possible effects, or any voting patterns associated with their implementation, can inform states which may consider implementing policies they lack. 
+
+My intended audience is the general public, with a policy-interested perspective. I did not want to describe my findings directly to policymakers, because on principle, I think it is important that information about elections and voting is accessible to the broader public. However, because this is an analysis of three policies, my visualizations try to describe the types of patterns and associations that may be of interest to policymakers, or others wondering about the effects of these electoral policies. 
+
+I created my dataset using data from the Census Bureau, Ballotpedia, and 270 to Win. The Census Bureau’s Historical Reported Voting Rates document registration and turnout rates for each state, across both Congressional and Presidential elections. These rates differ systemically between Congressional and Presidential elections, which is a pattern I depict in one of my visualizations, but for most of my analysis I isolate Presidential elections to avoid rocky lines or year-by-year swings. The Census Bureau notes that its data is incomplete before 1978, so I begin with the Congressional election that year, and use data through 2024. To prepare this data, I isolated rates for the citizen voting-age population (rather than the total state population) and built my own Excel spreadsheet by hand. 
+
+Ballotpedia provides information on electoral policies, and has online tables of states that have implemented each of the policies I focus on, including implementation years. I used this information to construct new columns in my spreadsheet that note whether each state-election had a certain policy in place, using binary variables. Finally, 270 to Win provides state-level election returns for Presidential elections, allowing me to add the percent vote for the Democrat candidate for each state, and for each Presidential election.
+
+From this data, I constructed six visualizations for my final report. My first plot depicts voter registration and turnout patterns for the US as a whole, over time. My goal for this plot was to orient the reader with national patterns before delving into patterns by state and policy group. I include both Congressional and Presidential elections to show how registration and turnout rates vary year-to-year, depending on the election type, but aside from that variation, national rates have stayed generally consistent over the past few decades.
+
+For this plot and all of my plots, I wanted to keep the data-ink ratio appropriate and only included information I thought was necessary for comprehension. For example, I removed the axis label for the “year” variable for all of my plots, because the axis values themselves are clear. I also chose simple colors that have, as much as possible, no association with a political party to provide the reader with visual cues. For my first plot, I assigned a solid linetype to the “turnout” line and a dashed linetype to the “registration” line, which I think is a helpful visual cue, because registration is essentially a preliminary step for voting, and turnout is the final outcome. I was also careful to give each plot a descriptive title that shows the reader exactly the message I am trying to convey, which serves as an anchor point as the reader begins to interpret the details of the plot. In my first plot, my title draws attention to the consistency of national rates.
+
+My second plot depicts the gradual adoption of the three electoral policies over time. I have a separate line for each policy, which climbs a percentage-of-states measure, showing how each policy becomes more and more prevalent. I picked a color to represent each policy, which I keep consistent for the rest of my plots. This plot has a very simple message and I think it is easy to interpret, so beyond a descriptive title, I didn’t make many more design choices to highlight my story.
+
+My third plot is a map that depicts the “current” state of electoral policies in the US, as far as my dataset allows. I initially wanted to include some kind of animation for my policy map, but due to issues that I will describe in my challenges section, I needed to instead pick one year. Thus, this graph provides the reader with the most up to date information on which states have certain policies. This graph uses a simple two-tone design to highlight states that have implemented a policy and states that have not. I chose a gray color for the “not implemented” category, and a stark purple for the “implemented” category, because I wanted to draw the eye to the latter, and let the “not implemented” states generally fade into the background. The map allows me to depict regional trends and provides my report with geographic information, which I think is important for any analysis of policies by state.
+
+My fourth and fifth visualizations are almost identical. The first depicts registration rates, and the second depicts turnout rates— separated because including all of the rates on one graph would have been very “busy” and would have required more cognitive load for the reader. Otherwise, both graphs compare the rates for states which have a certain policy and states which do not, year-by-year. The central focus of my overall report is these two graphs— whether registration and voting rates differ by states which do or do not implement certain policies. These graphs show a clear pattern, with a bold line indicating states which have a policy and a dashed line indicating states which don’t, and for every policy and almost every election, states with the policy had higher registration and turnout rates.  
+
+I was careful in my plot titles and my accompanying text to not suggest a causal effect, and in some places, to directly state that a causal effect is not apparent. Given statistical analysis I have done in other classes, I know that the implementation of these policies does not directly improve registration and turnout. Rather, there is an association between states with higher registration and turnout, and states that have certain policies, which I think says more about the underlying characteristics of those states and their voters. I tried to make this theory especially clear in the title and text of my report, shifting to a voter-focused interpretation rather than a state-focused interpretation.
+
+My final visualization gets more at this idea by depicting partisan patterns. This visualization is a dot plot that shows the distribution of all state elections on a partisan outcome scale, using the state’s percent vote for the Democrat candidate as the measure. These distributions are separated by the same policy groups I used in my fourth and fifth visualizations— comparing states with a certain policy to all states in that election that lacked it. I placed a central line at 50% to orient the viewer, because dots to the right of that line are states that with a majority vote for the Democrat candidate, and to the left, the opposite. I also included bold, dark median bars so the reader has a cue for the median of each category, because there are so many observations that interpreting patterns from the dots alone is difficult. Some adjustments to the bandwidth and transparency of the dots also made this visualization easier to interpret.
+
+This plot shows another clear difference between states with the electoral policies and states without— in every case, the states with a policy voted more Democratic on average. This again suggests that these associations likely stem from patterns among state populaces— voters in states with electoral reform are generally more Democratic, which makes sense, given that reform policies are likely more of a Democratic policy objective.
+
+Overall, I think my final project is effective. I tried to keep my visualizations very simple, because the reader already has to comprehend different voting outcomes for three separate policies at once. I wanted the reader to be able to easily compare between policies and between voting measures, so my data-ink is spent on those things.
+
+One area I think my report could improve is providing more information that supports my story. For instance, because I ended with a voter-focused story, having more demographic or partisan information about the populaces of different states would help my analysis. Unfortunately, I did not have this data at my disposal. I also wanted to highlight the registration and turnout trends for a few key states— I would have liked to isolate states which only implemented one of the three policies, but I did not have any states that only implemented VBM. I tried to visualize rates for states which implemented all three policies, all at different times, but it was difficult to show a clear story. I think this kind of analysis will benefit from more data gathered in the future, as states continue to implement these policies. With more observations, there may be clearer trends.
+
+One central challenge I faced in this project was dealing with maps. My vision for this project initially was very map-heavy— I wanted to have an interactive or animated map showing the gradual adoption of the policies over time, a map showing partisan patterns over time, or maybe a map that used a scale or large circles to depict regional trends for voter registration and turnout rates. However, due to the size of my dataset, loading maps took a very long time. The map in my final visualization used data reduced to just one year, and still takes a while to load, and my key vision for an animated map often took around an hour to generate. Even after rendering, my animated maps were very low quality and sometimes had choppiness or issues clearly depicting changes. As a result, I had to abandon my map plan and use just one map that was reduced to a single year.
+
+I also struggled with how best to tell my story— as I mentioned, I would have liked to highlight trends from a few key states, but the visualizations I produced with those subsets were often unclear. To some degree, this is a symptom of the lack of causal effect I discovered, because there were no clear jumps in registration and turnout rates for my subsetted states. I know including that kind of visualization could have helped clarify the lack of causal effect to the reader, but I also thought its inclusion would confuse the reader, because without an obvious trend its message was very unclear. 
+
+Finally, as with all data visualization projects, I faced a lot of challenges in getting my code working exactly right. This project was a project of trial and error, creating entire visualizations only to abandon them, and weighing different design choices against one another. Through this process, I learned a lot about R and my own coding skills, and I feel more confident in creating visualizations because I got so much practice. This was definitely a more time-consuming process than I expected, but I’m glad to have improved through all this work.
+
+
+Complete Code: 
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+# SETUP 
+
+# Load libraries
+library(here)
+library(tidyverse)
+library(readxl)
+library(sf)
+library(socviz)
+library(tigris)
+library(scales)
+
+# Read in data
+pres <- read_excel(here("Pres.xlsx"))
+cong <- read_excel(here("Congress.xlsx"))
+policies <- read_excel(here("Policies.xlsx"))
+sf <- read_sf(here("US_State_Boundaries", "US_State_Boundaries.shp"))
+```
+
+```{r}
+# CREATE BASE DATA FRAMES
+
+# Create merged data frame for all elections
+pres_cong <- bind_rows(cong, pres) %>% 
+  arrange(state_id, year, type)
+
+# Prepare shapefile
+us_states <- sf %>%
+  shift_geometry(position = "outside") %>%
+  filter(!(NAME %in% c("Puerto Rico"))) %>%
+  rename(state_name = NAME) %>%
+  select(state_name, geometry)
+
+# Merge shapefile with data 
+pres_cong_sf <- left_join(us_states, pres_cong, by = join_by(state_name)) 
+
+```
+
+
+```{r}
+# PLOT 1: Voter registration and turnout for all elections over time
+
+# Plot numbers are numbered with their original order in all of my potential visualizations, many of which were not used in the final project
+
+us <- pres_cong %>% 
+  select(year, type, registration_pct, turnout_pct) %>%
+  group_by(year, type) %>%
+  summarize(
+    avg_reg = mean(registration_pct),
+    avg_turnout = mean(turnout_pct)) %>%
+  pivot_longer(
+    cols = c(avg_reg, avg_turnout),
+    names_to = "measure",
+    values_to = "percent")
+
+p1 <- ggplot(us, aes(x = year, y = percent, linetype = measure, color = type)) +
+  geom_line() +
+  scale_y_continuous(
+    limits = c(40, 80), 
+    breaks = c(40, 45, 50, 55, 60, 65, 70, 75, 80), 
+    labels = label_percent(scale = 1)) +
+  scale_x_continuous(
+    breaks = c(1976, 1980, 1984, 1988, 1992, 1996, 2000, 2004, 2008, 2012, 2016, 2020, 2024)) +
+  scale_linetype_manual(
+    values = c("dashed", "solid"), 
+    labels = c("Registration", "Turnout")) +
+  scale_color_manual(
+    values = c("darkorange2", "darkviolet"),
+    breaks = c("Presidential", "Congressional")) +
+  labs (
+    x = NULL, 
+    y = "Percent of Eligible Voters",
+    title = "Voter Registration and Turnout Patterns Remain Fairly Consistent",
+    linetype = "Measure",
+    color = "Type of Election") +
+  theme_bw() +
+   theme (
+    plot.title = element_text(
+      face = "bold", 
+      family = "serif", 
+      size = 17, 
+      hjust = 0.5 , 
+      vjust = 4),
+    axis.title.y = element_text(
+      face = "bold", 
+      family = "serif", 
+      size = 14, 
+      margin = margin(r = 10)),
+    legend.title = element_text(
+      face = "bold", 
+      family = "serif", 
+      size = 14),
+    legend.text = element_text(
+      family = "serif", 
+      size = 12),
+    axis.text.x = element_text(
+      family = "serif",
+      size = 10),
+    axis.text.y = element_text(
+      family = "serif",
+      size = 10),
+    plot.margin = margin (2, 1, 2, 2, "cm")) 
+
+p1
+
+```
+
+
+```{r}
+# PLOT FOUR: Voter registration by policy group, Presidential only
+
+reg_by_policy <- pres_cong %>%
+  filter(type == "Presidential") %>%
+  select(year, type, registration_pct, vbm, avr, sdr) %>%
+  group_by(year) %>%
+  summarize(
+    avg_reg_vbm = mean(registration_pct[vbm == 1]),
+    avg_reg_avr = mean(registration_pct[avr == 1]),
+    avg_reg_sdr = mean(registration_pct[sdr == 1]),
+    avg_reg_novbm = mean(registration_pct[vbm == 0 & year > 1996]),
+    avg_reg_noavr = mean(registration_pct[avr == 0 & year > 2012]),
+    avg_reg_nosdr = mean(registration_pct[sdr == 0])) %>%
+  pivot_longer(
+    cols = c(avg_reg_vbm, avg_reg_avr, avg_reg_sdr, avg_reg_novbm, avg_reg_noavr, avg_reg_nosdr),
+    names_to = "measure",
+    values_to = "percent") %>%
+  mutate(policy = case_when(
+    measure == "avg_reg_vbm" ~ "States With and Without Vote By Mail",
+    measure == "avg_reg_novbm" ~ "States With and Without Vote By Mail",
+    measure == "avg_reg_avr" ~ "States With and Without Automatic Voter Registration",
+    measure == "avg_reg_noavr" ~ "States With and Without Automatic Voter Registration",
+    measure == "avg_reg_sdr" ~ "States With and Without Same Day Registration",
+    measure == "avg_reg_nosdr" ~ "States With and Without Same Day Registration"))
+
+p4 <- ggplot(reg_by_policy, aes(x = year, y = percent, linetype = measure, color = measure)) +
+  geom_line() +
+  facet_wrap(~policy) + 
+scale_y_continuous(
+    limits = c(65, 90), 
+    breaks = c(65, 70, 75, 80, 85, 90), 
+    labels = label_percent(scale = 1)) +
+  scale_x_continuous(
+    breaks = c(1980, 1984, 1988, 1992, 1996, 2000, 2004, 2008, 2012, 2016, 2020, 2024)) +
+  scale_linetype_manual(
+    values = c("avg_reg_avr" = "solid", 
+               "avg_reg_noavr" = "dashed", 
+               "avg_reg_nosdr" = "dashed", 
+               "avg_reg_novbm" = "dashed", 
+               "avg_reg_sdr" = "solid", 
+               "avg_reg_vbm" = "solid"), 
+    breaks = c("avg_reg_avr", "avg_reg_noavr"),
+    labels = c("States With Policy", "States Without Policy")) +
+  scale_color_manual(
+   values = c("avg_reg_avr" = "coral", 
+               "avg_reg_noavr" = "coral", 
+               "avg_reg_nosdr" = "cornflowerblue", 
+               "avg_reg_novbm" = "deeppink", 
+               "avg_reg_sdr" = "cornflowerblue", 
+               "avg_reg_vbm" = "deeppink"),
+   guide = "none") +
+  labs (
+    x = NULL, 
+    y = "Average Registration (Percent of Eligible Voters)",
+    title = "States With Electoral Policies Have Higher Average Registration Levels",
+    linetype = "Group") +
+  theme_bw() +
+   theme (
+    plot.title = element_text(
+      face = "bold", 
+      family = "serif", 
+      size = 15, 
+      vjust = 4),
+    axis.title.y = element_text(
+      face = "bold", 
+      family = "serif", 
+      size = 12, 
+      margin = margin(r = 20)),
+    legend.title = element_text(
+      face = "bold", 
+      family = "serif", 
+      size = 12),
+    legend.text = element_text(
+      family = "serif", 
+      size = 10),
+    axis.text.x = element_text(
+      family = "serif",
+      size = 11),
+    axis.text.y = element_text(
+      family = "serif",
+      size = 11),
+    strip.text = element_text(
+      family = "serif", 
+      size = 12),
+    plot.margin = margin (2, 0, 1, 1, "cm"))
+
+p4
+
+```
+
+```{r}
+# PLOT FIVE: Voter turnout by policy group, Presidential only
+
+tur_by_policy <- pres_cong %>%
+  filter(type == "Presidential") %>%
+  select(year, type, turnout_pct, vbm, avr, sdr) %>%
+  group_by(year) %>%
+  summarize(
+    avg_tur_vbm = mean(turnout_pct[vbm == 1]),
+    avg_tur_avr = mean(turnout_pct[avr == 1]),
+    avg_tur_sdr = mean(turnout_pct[sdr == 1]),
+    avg_tur_novbm = mean(turnout_pct[vbm == 0 & year > 1996]),
+    avg_tur_noavr = mean(turnout_pct[avr == 0 & year > 2012]),
+    avg_tur_nosdr = mean(turnout_pct[sdr == 0])) %>%
+  pivot_longer(
+    cols = c(avg_tur_vbm, avg_tur_avr, avg_tur_sdr, avg_tur_novbm, avg_tur_noavr, avg_tur_nosdr),
+    names_to = "measure",
+    values_to = "percent") %>%
+  mutate(policy = case_when(
+    measure == "avg_tur_vbm" ~ "States With and Without Vote By Mail",
+    measure == "avg_tur_novbm" ~ "States With and Without Vote By Mail",
+    measure == "avg_tur_avr" ~ "States With and Without Automatic Voter Registration",
+    measure == "avg_tur_noavr" ~ "States With and Without Automatic Voter Registration",
+    measure == "avg_tur_sdr" ~ "States With and Without Same Day Registration",
+    measure == "avg_tur_nosdr" ~ "States With and Without Same Day Registration"))
+
+p5 <- ggplot(tur_by_policy, aes(x = year, y = percent, linetype = measure, color = measure)) +
+  geom_line() +
+  facet_wrap(~policy) + 
+scale_y_continuous(
+    limits = c(55, 80), 
+    breaks = c(55, 60, 65, 70, 75, 80), 
+    labels = label_percent(scale = 1)) +
+  scale_x_continuous(
+    breaks = c(1980, 1984, 1988, 1992, 1996, 2000, 2004, 2008, 2012, 2016, 2020, 2024)) +
+  scale_linetype_manual(
+    values = c("avg_tur_avr" = "solid", 
+               "avg_tur_noavr" = "dashed", 
+               "avg_tur_nosdr" = "dashed", 
+               "avg_tur_novbm" = "dashed", 
+               "avg_tur_sdr" = "solid", 
+               "avg_tur_vbm" = "solid"), 
+    breaks = c("avg_tur_avr", "avg_tur_noavr"),
+    labels = c("States With Policy", "States Without Policy")) +
+  scale_color_manual(
+   values = c("avg_tur_avr" = "coral", 
+               "avg_tur_noavr" = "coral", 
+               "avg_tur_nosdr" = "cornflowerblue", 
+               "avg_tur_novbm" = "deeppink", 
+               "avg_tur_sdr" = "cornflowerblue", 
+               "avg_tur_vbm" = "deeppink"),
+   guide = "none") +
+  labs (
+    x = NULL, 
+    y = "Average Turnout (Percent of Eligible Voters)",
+    title = "States With Electoral Policies Have Higher Average Turnout Levels",
+    linetype = "Group") +
+  theme_bw() +
+   theme (
+    plot.title = element_text(
+      face = "bold", 
+      family = "serif", 
+      size = 15, 
+      vjust = 4),
+    axis.title.y = element_text(
+      face = "bold", 
+      family = "serif", 
+      size = 12, 
+      margin = margin(r = 20)),
+    legend.title = element_text(
+      face = "bold", 
+      family = "serif", 
+      size = 12),
+    legend.text = element_text(
+      family = "serif", 
+      size = 10),
+    axis.text.x = element_text(
+      family = "serif",
+      size = 11),
+    axis.text.y = element_text(
+      family = "serif",
+      size = 11),
+    strip.text = element_text(
+      family = "serif", 
+      size = 12),
+    plot.margin = margin (2, 0, 1, 1, "cm"))
+
+p5
+
+```
+
+```{r}
+# PLOT SIX: Adoption of electoral policies over time
+
+policy_adoption <- pres_cong %>%
+  select(year, vbm, avr, sdr) %>%
+  group_by(year) %>%
+  summarize(
+    pct_vbm = mean(vbm),
+    pct_avr = mean(avr),
+    pct_sdr = mean(sdr)) %>%
+  pivot_longer(
+    cols = c(pct_vbm, pct_avr, pct_sdr),
+    names_to = "measure",
+    values_to = "percent")
+
+p6 <- ggplot(policy_adoption, aes(x = year, y = percent, color = measure)) +
+  geom_line() +
+  scale_y_continuous(
+    breaks = c(0, 0.05, 0.10, 0.15, 0.20, 0.25, 0.30, 0.35, 0.40, 0.45, 0.50), 
+    labels = scales::percent) +
+  scale_x_continuous(
+    breaks = c(1976, 1980, 1984, 1988, 1992, 1996, 2000, 2004, 2008, 2012, 2016, 2020, 2024)) +
+  scale_color_manual(
+    values = c("pct_avr" = "coral",
+               "pct_sdr" = "cornflowerblue", 
+               "pct_vbm" = "deeppink"),
+    labels = c("pct_avr" = "Automatic Voter Registration",
+               "pct_sdr" = "Same Day Registration",
+               "pct_vbm" = "Vote By Mail")) +
+  labs (
+    x = NULL, 
+    y = "Percent of States With Policy",
+    title = "States Increasingly Adopted Electoral Policies Over Time",
+    subtitle = "Vote By Mail Lags Behind Other Policies",
+    color = "Policy") +
+  theme_bw() +
+   theme (
+    plot.title = element_text(
+      face = "bold", 
+      family = "serif", 
+      size = 15, 
+      hjust = 0.5 , 
+      vjust = 4),
+    plot.subtitle = element_text(
+      family = "serif", 
+      hjust = 0.5, 
+      vjust = 4,
+      size = 13),
+    axis.title.y = element_text(
+      face = "bold", 
+      family = "serif", 
+      size = 13, 
+      margin = margin(r=20)),
+    legend.title = element_text(
+      face = "bold", 
+      family = "serif", 
+      size = 13),
+    legend.text = element_text(
+      family = "serif", 
+      size = 12),
+    axis.text.x = element_text(
+      family = "serif",
+      size = 10),
+    axis.text.y = element_text(
+      family = "serif",
+      size = 10),
+    plot.margin = margin (2, 1, 2, 2, "cm")) 
+
+p6
+  
+```
+
+```{r}
+# PLOT SEVEN: Map- Policies in 2024 
+
+pres_cong_sf_1 <- pres_cong_sf %>% 
+  filter(year == 2024)  %>% 
+  select(state_name, geometry, vbm, avr, sdr) %>% 
+  pivot_longer(cols = c(vbm, avr, sdr),
+               names_to = "policy",
+               values_to = "implemented") %>%
+  mutate(implemented = recode(implemented, 
+                              `1` = "Implemented", 
+                              `0` = "Not Implemented"))
+
+labels <- as_labeller(c("avr" = "Automatic Voter Registration", 
+                        "sdr" = "Same Day Registration", 
+                        "vbm" = "Vote By Mail"))
+
+p7 <- ggplot(mapping = aes(fill = implemented)) + 
+  geom_sf(
+    data = pres_cong_sf_1, 
+    color = "white") + 
+  coord_sf(crs = st_crs("ESRI:102003")) + 
+  theme_void() +
+  facet_wrap(~policy, labeller = labels) +
+  labs (
+    title = "Electoral Policies Differ Across US States, 2024",
+    fill = "Policy") +
+  scale_fill_manual(
+    values = c("Implemented" = "darkviolet",
+               "Not Implemented" = "gray")) +
+  theme (
+    plot.background = element_rect(
+      fill = "white", 
+      color = NA),
+    plot.title = element_text(
+      face = "bold", 
+      family = "serif", 
+      size = 17, 
+      hjust = 0.5 , 
+      vjust = 4),
+    legend.title = element_text(
+      face = "bold", 
+      family = "serif", 
+      size = 15),
+    legend.text = element_text(
+      family = "serif", 
+      size = 14),
+    legend.position = "bottom",
+    strip.text = element_text(
+      family = "serif",
+      size = 15, 
+      margin = margin(b = 8)))
+    
+p7
+```
+
+
+```{r}
+# PLOT NINE: dot plot
+
+partisan <- pres_cong %>%
+  filter(type == "Presidential") %>%
+  select(year, vbm, avr, sdr, dem_vote_pct) %>%
+  pivot_longer(
+    cols = c(vbm, avr, sdr),
+    names_to = "policytype",
+    values_to = "implemented") %>%
+  mutate(policy = case_when(
+    policytype == "vbm" & implemented == 0 ~ "No Vote By Mail",
+    policytype == "vbm" & implemented == 1 ~ "Vote By Mail",
+    policytype == "avr" & implemented == 0 ~ "No Automatic Voter Registration",
+    policytype == "avr" & implemented == 1 ~ "Automatic Voter Registration",
+    policytype == "sdr" & implemented == 0 ~ "No Same Day Registration",
+    policytype == "sdr" & implemented == 1 ~ "Same Day Registration"))
+
+partisan$policy <- factor(partisan$policy, 
+                          levels = c(
+                            "No Vote By Mail", 
+                            "Vote By Mail", 
+                            "No Same Day Registration", 
+                            "Same Day Registration", 
+                            "No Automatic Voter Registration", 
+                            "Automatic Voter Registration"))
+
+p9 <- ggplot(data = partisan, mapping = aes(x = policy, y = dem_vote_pct, color = policytype)) + 
+  geom_jitter(
+    stat = "identity", 
+    width = 0.1, 
+    alpha = 0.5) + 
+  stat_summary(
+    fun = "median", 
+    geom = "crossbar", 
+    width = 0.3, 
+    linewidth = 0.4, 
+    color = "black") +
+  geom_hline(
+    yintercept = 50, 
+    linewidth = 0.3) +
+  coord_flip() +
+  scale_y_continuous(
+    limits = c(20, 80),
+    breaks = c(20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80),
+    labels = scales::label_percent(scale = 1)) +
+  scale_color_manual(
+    values = c("avr" = "coral",
+               "sdr" = "cornflowerblue", 
+               "vbm" = "deeppink")) +
+  labs (
+    x = NULL, 
+    y = "State Percent Vote for Democrat",
+    title = "States with Electoral Policies Voted More Democratic in Presidential Elections 1980-2024",
+    color = "Policy") +
+  theme_bw() +
+   theme (
+    plot.title = element_text(
+    face = "bold", 
+    family = "serif", 
+    size = 15),
+    axis.title.x = element_text(
+      face = "bold", 
+      family = "serif", 
+      size = 12, 
+      margin = margin(t=15)),
+    axis.text.x = element_text(
+      family = "serif", 
+      size = 12),
+    axis.text.y = element_text(
+      family = "serif", 
+      size = 12),
+    legend.position = "none",
+    plot.margin = margin(1, 1, 1, 1, "cm")) 
+
+p9
+
+```
+
+```{r}
+# Saving Plots
+
+ggsave (here("FinalPlots", "P1.png"), p1, width = 10, height = 10)
+ggsave (here("FinalPlots", "P4.png"), p4, width = 18, height = 8)
+ggsave (here("FinalPlots", "P5.png"), p5, width = 18, height = 8)
+ggsave (here("FinalPlots", "P6.png"), p6, width = 10, height = 10)
+ggsave (here("FinalPlots", "P7.png"), p7, width = 20, height = 8)
+ggsave (here("FinalPlots", "P9.png"), p9, width = 16, height = 8)
+
+
+```
+
+
